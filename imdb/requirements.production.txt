@@ -1,0 +1,4 @@
+-r requirements.common.txt
+boto3==1.9.184
+uwsgi==2.0.18
+django-storages==1.7.1

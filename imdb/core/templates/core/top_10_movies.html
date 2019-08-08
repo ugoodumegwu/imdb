@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    My Top 10
+{% endblock %}
+
+{% block main %}
+    <h2>The Top 10 Movies Picks </h2>
+    <ol class>
+    {% for element in object_list %}
+        <li><a href="{% url 'core:MovieDetail' pk=element.id %}">{{ element }} - score : {{ element.score }} </a></li>
+    {% endfor %}
+    </ol>
+{% endblock %}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} HomeBase {% endblock %} </title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!-- navigation bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">My Movie DB</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'core:MovieList' %}">Home</a></li>
+      <li><a href="{% url 'core:Top10MoviesList' %}"> Top 10 Movies </a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="#">You are logged in as {{ user }} </a></li>
+        {% else %}
+        <li><a href="#">You are not logged </a></li>
+        {% endif  %}
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class = 'container'>
+    <div class = 'row'>
+        <div class = 'col-sm-8'>
+            {% block main %} main content {% endblock %}
+        </div>
+        <div class = 'col-sm-4 offset-sm-1 '>
+            {% block sidebar %} <p>sidebar</p> {% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
